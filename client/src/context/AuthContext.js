@@ -23,6 +23,16 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const registerUser = async (user) => {
+    dispatch({ type: 'REGISTER_USER_START' });
+    try {
+      const { data } = await axois.post('/api/auth/register', user);
+      dispatch({ type: 'REGISTER_USER_SUCCESS', payload: data });
+    } catch (err) {
+      dispatch({ type: 'REGISTER_USER_ERROR', payload: err.response.data });
+    }
+  };
+
   const logoutUser = async () => {
     dispatch({ type: 'LOGOUT_USER' });
   };
@@ -38,6 +48,7 @@ const AuthContextProvider = ({ children }) => {
         error: state.error,
         loginUser,
         logoutUser,
+        registerUser,
       }}
     >
       {children}

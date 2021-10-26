@@ -27,9 +27,16 @@ router.post('/login', async (req, res) => {
 //REGISTER ROUTER
 router.post('/register', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password: bodyPassword } = req.body;
+    const user = await User.find({ email });
+    if (user.length > 0) {
+      return res
+        .status(400)
+        .json('This user registered before. Try another one.');
+    }
+
     var salt = bcrypt.genSaltSync(10);
-    var hashedPassword = bcrypt.hashSync(password, salt);
+    var hashedPassword = bcrypt.hashSync(bodyPassword, salt);
 
     const newUser = new User({
       name,
@@ -39,7 +46,11 @@ router.post('/register', async (req, res) => {
 
     await newUser.save();
 
-    res.status(201).json('User created.');
+    const token = await jwt.sign(
+      { user: newUser._doc },
+      process.env.JWT_SECRET
+    );
+    res.status(201).json({ ...newUser._doc, token });
   } catch (err) {
     console.log(err);
     res.status(500).json('Server Error');

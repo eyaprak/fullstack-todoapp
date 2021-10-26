@@ -10,6 +10,7 @@ import { TodoListContext } from './context/TodoListContext';
 import Home from './home/Home';
 import Login from './login/Login';
 import { AnimatePresence } from 'framer-motion';
+import Register from './register/Register';
 function App() {
   const { user } = useContext(AuthContext);
   const { error } = useContext(TodoListContext);
@@ -28,6 +29,9 @@ function App() {
             ) : (
               <Redirect to='/login' />
             )}
+          </Route>
+          <Route path='/register'>
+            {!error && user ? <Redirect to='/' /> : <Register />}
           </Route>
         </Switch>
       </AnimatePresence>
