@@ -6,8 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 function TodoList() {
-  const { todoList, isFetching, error } = useContext(TodoListContext);
-  console.log(todoList);
+  const { todoList, isFetching } = useContext(TodoListContext);
   return (
     <div className='todoList'>
       <ul className='list'>
