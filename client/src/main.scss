@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Pacifico&display=swap');
+:root {
+  --main-color: #0c0e1e;
+  --font-color: white;
+  --item-backcolor: rgba(255, 255, 255, 0.5);
+  --title-fontfamily: 'Pacifico', cursive;
+  --text-fontfamily: 'Acme', sans-serif;
+}
+* body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--main-color);
+}

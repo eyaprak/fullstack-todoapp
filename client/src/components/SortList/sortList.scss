@@ -1,0 +1,14 @@
+.sortList {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  gap: 5px;
+  margin: 15px 0;
+  cursor: pointer;
+  margin-left: auto;
+  span {
+    font-family: var(--text-fontfamily);
+  }
+}

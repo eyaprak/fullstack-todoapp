@@ -1,0 +1,23 @@
+.homeWrapper {
+  display: flex;
+  max-width: 450px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  flex-direction: column;
+  .error {
+    font-family: var(--text-fontfamily);
+    font-size: 18px;
+    list-style-type: none;
+    background: var(--item-backcolor);
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px -30px white;
+    color: var(--font-color);
+    margin-top: 10px;
+    padding: 20px;
+  }
+  a {
+    color: inherit;
+  }
+}
